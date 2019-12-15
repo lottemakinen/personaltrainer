@@ -18,8 +18,18 @@ export default function Trainings() {
             Header: 'Date',
             accessor: 'date'
         },
-        
-
+        {
+            Header: 'Duration',
+            accessor: 'duration'
+        },
+        {
+            Header: 'Activity',
+            accessor: 'activity'
+        },
+        {
+            Header: 'Customer',
+            accessor: 'cstomer.id'
+        },
     ]
 
     return(

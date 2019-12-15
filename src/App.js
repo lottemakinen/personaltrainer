@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import Customerlist from './components/Customerlist';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { MenuItem } from '@material-ui/core';
+import Menu from './components/Menu';
+import Trainings from './components/Trainings';
 
 
 function App() {
@@ -14,10 +16,12 @@ function App() {
 
         <AppBar position="static">
         <Toolbar>
+        <Menu />
           <Typography variant="h6" >
           Personal trainer
           </Typography>
-        </Toolbar>
+          
+        </Toolbar> 
       </AppBar>
       <Customerlist />
     </div>
