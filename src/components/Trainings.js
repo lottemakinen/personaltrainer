@@ -1,6 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
-import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import MaterialTable from 'material-table';
+import Moment from 'react-moment';
+
 
 export default function Trainings() {
     const [trainings, setTrainings] = useState([]);
@@ -8,33 +11,32 @@ export default function Trainings() {
     useEffect(() => fetchData() , []);
 
     const fetchData = () => {
-        fetch('https://customerrest.herokuapp.com/api/trainings')
+        fetch('https://customerrest.herokuapp.com/gettrainings')
         .then(response => response.json())
-        .then(data => setTrainings(data.content))
+        .then(data => setTrainings(data))
     }
 
     const columns = [
-        {
-            Header: 'Date',
-            accessor: 'date'
-        },
-        {
-            Header: 'Duration',
-            accessor: 'duration'
-        },
-        {
-            Header: 'Activity',
-            accessor: 'activity'
-        },
-        {
-            Header: 'Customer',
-            accessor: 'cstomer.id'
-        },
-    ]
+        { title: 'Activity', field: 'activity' },
+        { title: 'Date', field: 'date'},
+        { title: 'Duration', field: 'duration' },
+        { title: 'Customer', field: 'customer.firstname'}
+      ]
+
+      const dateToFormat = 'date';
+
+
 
     return(
-        <div>
-            <ReactTable filterable={true} data={trainings} columns={columns} />
+
+        <div> 
+        <Moment date={dateToFormat} />
+         <MaterialTable
+      title="Trainings"
+      columns={columns}
+      data={trainings}
+      date={dateToFormat}
+            />
 
         </div>
     );
