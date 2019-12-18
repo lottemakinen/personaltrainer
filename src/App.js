@@ -32,6 +32,7 @@ function App() {
             Personal trainer
           </Typography>
         </Toolbar>
+        </AppBar>
         <BrowserRouter>
         <div>
           <Link to="/customers">Customers</Link>{' '}
@@ -42,7 +43,7 @@ function App() {
           </Switch>
           </div>
           </BrowserRouter>
-      </AppBar>
+      
 
     </div>
   );

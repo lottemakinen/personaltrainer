@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'react-table/react-table.css';
 import MaterialTable from 'material-table';
+import ReactTable from 'react-table';
 
 export default function Customerlist() {
     const [customers, setCustomers] = React.useState([]);
@@ -15,23 +16,41 @@ export default function Customerlist() {
 
     
     const columns = [
-      { title: 'First name', field: 'firstname' },
-      { title: 'Last name', field: 'lastname' },
-      { title: 'Street address', field: 'streetaddress' },
-      { title: 'Postcode', field: 'postcode' },
-      { title: 'City', field: 'city' },
-      { title: 'Email', field: 'email' },
-      { title: 'Phone', field: 'phone' },
+      {
+        Header: 'First name',
+        accessor: 'firstname'
+    },
+    {
+        Header: 'Last name',
+        accessor: 'lastname'
+    },
+    {
+        Header: 'Street address',
+        accessor: 'streetaddress'
+    },
+    {
+        Header: 'Postcode',
+        accessor: 'postcode'
+    },
+    {
+        Header: 'City',
+        accessor: 'city'
+    },
+    {
+        Header: 'Email',
+        accessor: 'email'
+    },
+    {
+        Header: 'Phone',
+        accessor: 'phone'
+    },
     ]
     
 
     return(
         <div>
-            <MaterialTable
-      title="Customers"
-      columns={columns}
-      data={customers}
-            />
+            <ReactTable filterable={true} data={customers} columns={columns} />
+            
         </div>
     );
 }

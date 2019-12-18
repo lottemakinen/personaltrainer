@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import 'react-table/react-table.css';
 import MaterialTable from 'material-table';
 import Moment from 'react-moment';
+import ReactTable from 'react-table';
 
 
 export default function Trainings() {
@@ -17,27 +18,35 @@ export default function Trainings() {
     }
 
     const columns = [
-        { title: 'Activity', field: 'activity' },
-        { title: 'Date', field: 'date'},
-        { title: 'Duration', field: 'duration' },
-        { title: 'Customer', field: 'customer.firstname'}
+        {
+            Header: 'Activity',
+            accessor: 'activity'
+        },
+        {
+            Header: 'Date',
+            accessor: 'date'
+        },
+        {
+            Header: 'Duration',
+            accessor: 'duration'
+        },
+        {
+            Header: 'Customer',
+            accessor: 'customer.firstname'
+        },
       ]
+
 
       const dateToFormat = 'date';
 
 
 
     return(
-
-        <div> 
+        <div>
         <Moment date={dateToFormat} />
-         <MaterialTable
-      title="Trainings"
-      columns={columns}
-      data={trainings}
-      date={dateToFormat}
+        <ReactTable filterable={true} data={trainings} columns={columns} />
             />
+            </div>
 
-        </div>
     );
 }
