@@ -34,6 +34,9 @@ export default function Trainings() {
             Header: 'Customer',
             accessor: 'customer.firstname'
         },
+        {
+            accessor: 'links[0].href',
+        },
       ]
 
 
