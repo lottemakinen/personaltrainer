@@ -1,9 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import 'react-table/react-table.css';
-import MaterialTable from 'material-table';
 import Moment from 'react-moment';
 import ReactTable from 'react-table';
+import Button from '@material-ui/core/Button';
+import { makeStyles, formatMs } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import moment from 'moment';
 
 
 export default function Trainings() {
@@ -16,6 +19,23 @@ export default function Trainings() {
         .then(response => response.json())
         .then(data => setTrainings(data))
     }
+
+    const deleteTrainings = (link) => {
+        if(window.confirm('Are you sure?')){
+        fetch(link, {method: 'DELETE'})
+        .then(res => fetchData())
+        .catch(err => console.error(err))
+    }
+    }
+
+    const useStyles = makeStyles(theme => ({
+        button: {
+          margin: theme.spacing(1),
+        },
+      }));
+
+      const classes = useStyles();
+      
 
     const columns = [
         {
@@ -35,18 +55,20 @@ export default function Trainings() {
             accessor: 'customer.firstname'
         },
         {
-            accessor: 'links[0].href',
+            filterable: false,
+            sortable: false,
+            accessor: 'data.id',
+            Cell: row => <Button size="small" variant="contained" color="secondary" className={classes.button} startIcon={<DeleteIcon />}  onClick={() => deleteTrainings(row.value)}>Delete</Button>
         },
       ]
 
 
-      const dateToFormat = 'date';
+
 
 
 
     return(
         <div>
-        <Moment date={dateToFormat} />
         <ReactTable filterable={true} data={trainings} columns={columns} />
             />
             </div>

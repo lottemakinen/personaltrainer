@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Addcustomer from './Addcustomer';
 import Editcustomer from './Editcustomer';
+import Addtrainings from './Addtrainings';
 
 export default function Customerlist() {
     const [customers, setCustomers] = React.useState([]);
@@ -58,6 +59,18 @@ export default function Customerlist() {
         .catch(err => console.error(err))
       }
 
+      const saveTrainings = (trainings) => {
+        fetch('https://customerrest.herokuapp.com/api/trainings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(trainings)
+        })
+        .then(res => fetchData())
+        .catch(err => console.error(err))
+      }
+
 
     const columns = [
       {
@@ -87,6 +100,12 @@ export default function Customerlist() {
     {
         Header: 'Phone',
         accessor: 'phone'
+    },
+    {
+        sortable: false,
+        filterable: false,
+        accessor: 'links[0].href',
+        Cell: row => <Addtrainings saveTrainings={saveTrainings} />
     },
     {
         sortable: false,
