@@ -66,7 +66,7 @@ export default function Addtrainings(props) {
         <TextField
             margin="dense"
             name="customer"
-            value={trainings.customer.firstname}
+            value={trainings.customer}
             onChange={e => handleInputChange(e)}
             label="Customer"
             fullWidth

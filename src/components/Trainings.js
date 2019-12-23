@@ -6,7 +6,6 @@ import ReactTable from 'react-table';
 import Button from '@material-ui/core/Button';
 import { makeStyles, formatMs } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-import moment from 'moment';
 
 
 export default function Trainings() {
@@ -57,7 +56,7 @@ export default function Trainings() {
         {
             filterable: false,
             sortable: false,
-            accessor: 'data.id',
+            accessor: 'data',
             Cell: row => <Button size="small" variant="contained" color="secondary" className={classes.button} startIcon={<DeleteIcon />}  onClick={() => deleteTrainings(row.value)}>Delete</Button>
         },
       ]

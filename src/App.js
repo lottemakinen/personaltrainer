@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Customerlist from './components/Customerlist';
 import Trainings from './components/Trainings';
+import Calendar from './components/Calendar';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
@@ -35,9 +36,11 @@ function App() {
         <div>
           <Link to="/customers">Customers</Link>{' '}
           <Link to="/trainings">Trainings</Link>{' '}
+          <Link to="/calendar">Calendar</Link>
         <Switch>
             <Route exact path="/customers" component={Customerlist} />
             <Route path="/trainings" component={Trainings} />
+            <Route path="/calendar" component={Calendar} />
           </Switch>
           </div>
           </BrowserRouter>
